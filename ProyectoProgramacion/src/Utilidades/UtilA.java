@@ -6,6 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Array;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -88,6 +93,124 @@ public void popUser(String name, String password) throws IOException {
     System.out.println("¿Que usuario desea eliminar?");
     
 }
+
+public static void VerdatosUsuario () {
+	try {
+		Class.forName("org.sqlite.JDBC");
+	} catch (ClassNotFoundException e) {
+		System.out.println("No se ha podido cargar el driver de la base de datos");
+	}
+	try {
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:baseproyecto.db");
+		Statement stmt  = conn.createStatement();
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM USUARIO");
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				System.out.format("%s, %s%n", apellido,nombre );
+			}
+		}	catch (SQLException e) {
+			e.printStackTrace(); 
+		}
+		conn.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("No se ha podido establecer conexion a la base de datos");
+	}
+	
+}
+
+public static void VerdatosCalzado () {
+	try {
+		Class.forName("org.sqlite.JDBC");
+	} catch (ClassNotFoundException e) {
+		System.out.println("No se ha podido cargar el driver de la base de datos");
+	}
+	try {
+		Connection conn1 = DriverManager.getConnection("jdbc:sqlite:baseproyecto.db");
+		Statement stmt1  = conn1.createStatement();
+		try {
+			ResultSet rs1 = stmt1.executeQuery("SELECT * FROM CALZADO");
+			while(rs1.next()) {
+				String nombre = rs1.getString("nombre");
+				String apellido = rs1.getString("apellido");
+				System.out.format("%s, %s%n", apellido,nombre );
+			}
+		}	catch (SQLException e) {
+			e.printStackTrace(); 
+		}
+		conn1.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("No se ha podido establecer conexion a la base de datos");
+	}
+	
+}
+
+public static void UpdateUsuario (String name, String password, String puesto, int tlfn, int codigousuario){
+	
+	try {
+		Class.forName("org.sqlite.JDBC");
+	} catch (ClassNotFoundException e) {
+		System.out.println("No se ha podido cargar el driver de la base de datos");
+	}
+	
+	System.out.println("hola");
+	
+	try {
+		Connection conn3 = DriverManager.getConnection("jdbc:sqlite:baseproyecto.db");
+		
+		Statement stmt3  = conn3.createStatement();
+		
+		int rows = stmt3.executeUpdate("INSERT INTO USUARIO (CODIGO,NOMBRE,CONTRASENA,PUESTO,TELEFONO) VALUES (+ name,password,puesto,tlfn,codigousuario");
+		System.out.println(String.format("%d filas modificas", rows));
+		
+		stmt3.close();
+		conn3.close();
+		
+	}	catch (SQLException e) {
+		System.out.println("No se ha podido conectar a la base de datos");
+		System.out.println(e.getMessage());
+	}
+
+	
+}
+
+public static void UpdateCalzado (int Codigo, int cantidad, int precio, String color, int talla, String tipo){
+	
+	try {
+		Class.forName("org.sqlite.JDBC");
+	} catch (ClassNotFoundException e) {
+		System.out.println("No se ha podido cargar el driver de la base de datos");
+	}
+	
+	System.out.println("hola");
+	
+	try {
+		Connection conn4 = DriverManager.getConnection("jdbc:sqlite:baseproyecto.db");
+		
+		Statement stmt4  = conn4.createStatement();
+		
+		int rows = stmt4.executeUpdate("INSERT INTO CALZADO (CODIGOCAL,CANTIDAD,PRECIO,COLOR,TALLA,TIPO) VALUES (CODIGO,CANTIDAD,PRECIO,COLOR,TALLA,TIPO");
+		System.out.println(String.format("%d filas modificas", rows));
+		
+		stmt4.close();
+		conn4.close();
+		
+	}	catch (SQLException e) {
+		System.out.println("No se ha podido conectar a la base de datos");
+		System.out.println(e.getMessage());
+	}
+
+	
+}
+
+
+
+
+
+
 
 	
 	

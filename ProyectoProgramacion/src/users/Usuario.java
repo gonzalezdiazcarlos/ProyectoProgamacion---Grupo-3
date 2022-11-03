@@ -13,6 +13,7 @@ public class Usuario {
   private String password;
   private String puesto;
   private int tlfn; 
+  private int codigousuario;
       public String getName() {return name;}
 	  public void setName(String name) {this.name = name;}
 	  public String getpuesto() {return puesto;}
@@ -21,6 +22,9 @@ public class Usuario {
 	  public void setPassword(String password) {this.password = password;}
 	  public int getTlfn() {return tlfn;}
 	  public void setTlfn(int tlfn) {this.tlfn = tlfn;} 
+	  public int getCodigousuario() {return codigousuario;}
+	  public void setcodigousuario(int codigousuario) {this.codigousuario = codigousuario;}
+	  
 
 
 class adminUser extends Usuario{
