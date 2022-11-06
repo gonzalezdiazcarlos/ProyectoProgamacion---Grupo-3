@@ -8,7 +8,20 @@ public class Calzado {
 	private String Color;
 	private int Talla;
 	private String Tipo;
+	public String Genero;
+	public boolean Eco;
+	public String Estampado;
 	
+	
+	public void setGenero(String Genero) {
+		this.Genero=Genero;
+	}
+	public void setEstampado(String Estampado) {
+		this.Estampado=Estampado;
+	}
+	public void setEco(boolean Eco) {
+		this.Eco=Eco;
+	}
 	public void setCantidad (int Cantidad) {
 		this.Cantidad = Cantidad;
 	}
@@ -29,11 +42,18 @@ public class Calzado {
 		this.Tipo = Tipo;
 	}
 	
+	
+	public String getGenero() {return Genero;}
+	public boolean getEco() {return Eco;}
+	public String getEstampado() {return Estampado;}
 	public int getCantidad() {return Cantidad;}
 	public int getCodigo() {return Codigo;}
 	public int getPrecio() {return Precio;}
 	public String getColor() {return Color;}
 	public int getTalla() {return Talla;}
 	public String getTipo() {return Tipo;}
+	
+	
+	
 	
 }
