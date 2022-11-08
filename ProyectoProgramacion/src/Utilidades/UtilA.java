@@ -136,9 +136,9 @@ public static void VerdatosCalzado () {
 		try {
 			ResultSet rs1 = stmt1.executeQuery("SELECT * FROM CALZADO");
 			while(rs1.next()) {
-				String nombre = rs1.getString("nombre");
-				String apellido = rs1.getString("apellido");
-				System.out.format("%s, %s%n", apellido,nombre );
+				String codigo = rs1.getString("CODIGO");
+				String precio = rs1.getString("PRECIO");
+				System.out.format("%s, %s%n",codigo ,precio );
 			}
 		}	catch (SQLException e) {
 			e.printStackTrace(); 
